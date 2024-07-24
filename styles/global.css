@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-color: #000000;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.container__html {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
