@@ -1,8 +1,4 @@
-import {
-  navButtons as navButtons,
-  container,
-  savedPage,
-} from "./variables.js";
+import { navButtons as navButtons, container, savedPage } from "./variables.js";
 
 const loadPage = async (page) => {
   let pageUrl;

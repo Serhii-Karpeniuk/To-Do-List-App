@@ -1,9 +1,116 @@
-.image__user {
-  width: 50px;
-  height: 50px;
+.header {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header__container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.image__user {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.container__avatar {
+  position: relative;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.uploadButton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.uploadButton:hover {
+  background-color: #0056b3;
+}
+
+.user__container {
+  text-align: right;
+}
+
+.user__name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.current_date {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .user__container {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .uploadButton {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .uploadButton {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  }
+
+  .user__name {
+    font-size: 16px;
+  }
+
+  .current_date {
+    font-size: 12px;
+  }
 }

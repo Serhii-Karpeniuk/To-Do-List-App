@@ -1,7 +1,16 @@
 <section class="header">
   <div class="header__container">
     <div class="image__user">
-      <img src="/img/user_image.webp" alt="User image" class="image__user" />
+      <input
+        type="file"
+        class="fileInput"
+        accept="image/*"
+        style="display: none"
+      />
+      <div class="container__avatar">
+        <img class="avatar" src="" alt="Your Avatar" />
+        <a class="uploadButton">+</a>
+      </div>
     </div>
     <div class="user__container">
       <p class="user__name">User Name</p>
