@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .image__user {
@@ -51,7 +52,7 @@
 }
 
 .user__container {
-  text-align: right;
+  text-align: left;
 }
 
 .user__name {
@@ -68,13 +69,13 @@
 
 @media (max-width: 768px) {
   .header__container {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     text-align: center;
   }
 
   .user__container {
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
   }
 

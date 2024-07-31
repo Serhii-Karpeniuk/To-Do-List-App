@@ -1,0 +1,51 @@
+#md {
+  visibility: hidden;
+}
+#md_bg {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  background-color: #000000;
+  opacity: 0.35;
+  position: fixed;
+}
+#md_dialog {
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  font-family: "Tahoma", Arial, sans-serif;
+  z-index: 100;
+  width: 90%;
+  max-width: 950px;
+  position: fixed;
+  padding: 10px;
+  border: 1px solid #383838;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow:
+    5px 5px 12px rgba(0, 0, 0, 0.22),
+    0 19px 60px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 0);
+}
+#md_close {
+  position: absolute;
+  padding: 0;
+  top: -10px;
+  right: -5px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #cccccc;
+  border-radius: 50%;
+  background-color: rgba(61, 61, 61, 0.8);
+  box-shadow: 0px 0px 10px #000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 22px;
+}
+#md_close:hover {
+  background-color: rgba(252, 20, 0, 0.8);
+}

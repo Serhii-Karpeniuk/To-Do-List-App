@@ -1,31 +1,33 @@
-import { navButtons as navButtons, container, savedPage } from "./variables.js";
+import {
+  navButtons as navButtons,
+  container,
+  savedPage,
+} from "../variables/navside.variables.js";
 
-const loadPage = async (page) => {
-  let pageUrl;
+const getPageUrl = (page) => {
   switch (page) {
     case "1":
-      pageUrl = "page1.html";
-      break;
+      return "page1.html";
     case "2":
-      pageUrl = "page2.html";
-      break;
+      return "page2.html";
     case "3":
-      pageUrl = "page3.html";
-      break;
+      return "page3.html";
     case "4":
-      pageUrl = "page4.html";
-      break;
+      return "page4.html";
     default:
-      container.innerHTML = "Сторінку не знайдено";
-      return;
+      return "404.html";
   }
+};
+
+const loadPage = async (page) => {
+  const pageUrl = getPageUrl(page);
 
   try {
     const response = await fetch(pageUrl);
     const data = await response.text();
     container.innerHTML = data;
   } catch (error) {
-    container.innerHTML = "Помилка при завантаженні сторінки";
+    container.innerHTML = "Помилка при завантаженні сторінки"; // update
   }
 };
 

@@ -1,20 +1,30 @@
 <section class="header">
   <div class="header__container">
-    <div class="image__user">
-      <input
-        type="file"
-        class="fileInput"
-        accept="image/*"
-        style="display: none"
-      />
-      <div class="container__avatar">
-        <img class="avatar" src="" alt="Your Avatar" />
-        <a class="uploadButton">+</a>
+    <div class="user__wrap">
+      <div class="image__user">
+        <input
+          type="file"
+          class="fileInput"
+          accept="image/*"
+          style="display: none"
+        />
+        <div class="container__avatar">
+          <img class="avatar" src="" alt="Your Avatar" />
+          <a class="uploadButton">+</a>
+        </div>
+      </div>
+      <div class="user__container">
+        <p class="user__name"></p>
+        <p class="current_date"></p>
       </div>
     </div>
-    <div class="user__container">
-      <p class="user__name">User Name</p>
-      <p class="current_date">Morning, User</p>
-    </div>
+    <button class="add_user-name">
+      <img
+        src="../img/icons8-user-64.png"
+        alt="User Icon"
+        width="30px"
+        height="30px"
+      />
+    </button>
   </div>
 </section>
