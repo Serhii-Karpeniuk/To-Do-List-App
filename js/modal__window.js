@@ -1,12 +1,12 @@
-import { userName, addUserNameButton } from "../variables/header.variables.js";
+import { addUserNameButton } from "../variables/header.variables.js";
 import {
   fnameInput,
   lnameInput,
-  sendModalButton,
   modalContainer,
   closeButton,
-  storedFname,
+  form,
 } from "../variables/modal.variables.js";
+ import { setFullName } from '../js/header.js';
 
 let isFormValid = true;
 
@@ -47,7 +47,7 @@ const setSucces = (element) => {
   element.classList.remove("invalid");
 };
 
-sendModalButton.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   validateInput();
@@ -58,22 +58,46 @@ sendModalButton.addEventListener("click", (e) => {
 
   modalContainer.style.visibility = "hidden";
 
-  const fname = fnameInput.value;
-  const lname = lnameInput.value;
+  const { firstName, lastName } = getFormData(form);
+  const fullName = `${firstName} ${lastName}`;
+  localStorage.setItem("fname", firstName);
 
-  userName.innerHTML = "";
+  // const firstNameEvent = new CustomEvent("local-storage", {
+  //   detail: { key: "fname", oldValue: "old", newValue: fname },
+  // });
+  
+  const firstNameEvent = createCustomStorageEvent("fname", null, firstName);
+  window.dispatchEvent(firstNameEvent);
+  
+  const fullNameEvent = createCustomStorageEvent(
+    "fullName",
+    null, `${firstName} ${lastName}`
+  );
+  window.dispatchEvent(fullNameEvent);
 
-  const fullName = document.createElement("span");
-  fullName.innerHTML = `${fname}, ${lname}`;
-
-  userName.appendChild(fullName);
-
-  localStorage.setItem("fname", fname);
-  localStorage.setItem("lname", lname);
+  localStorage.setItem("lname", lastName);
 
   fnameInput.value = "";
   lnameInput.value = "";
+
+  setFullName(fullName);
 });
+
+ function getFormData(form) {
+  const modalForm = new FormData(form);
+
+  const firstName = modalForm.get("fname");
+  const lastName = modalForm.get("lname");
+
+  return { firstName, lastName };
+}
+
+
+function createCustomStorageEvent(key, oldValue, newValue) {
+  return new CustomEvent("local-storage", {
+    detail: { key, oldValue, newValue },
+  });
+}
 
 closeButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -100,18 +124,4 @@ const clearErrors = () => {
   lnameInput.classList.remove("invalid", "valid");
 };
 
-const localStoredName = () => {
-  const storedFname = localStorage.getItem("fname");
-  const storedLname = localStorage.getItem("lname");
 
-  if (storedFname && storedLname) {
-    userName.innerHTML = "";
-
-    const fullName = document.createElement("span");
-    fullName.innerHTML = `${storedFname}, ${storedLname}`;
-
-    userName.appendChild(fullName);
-  }
-};
-
-localStoredName();

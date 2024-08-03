@@ -1,0 +1,18 @@
+.filtered__tasks {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.form__task-container {
+  margin: auto;
+  display: block;
+  background-color: aqua;
+  width: 300px;
+  height: 150px;
+  text-align: left;
+}
+
+.form_task {
+  padding: 20px;
+}

@@ -3,8 +3,10 @@ import {
   uploadButton,
   avatar,
   currentDate,
+  userName,
 } from "../variables/header.variables.js";
 import { storedFname } from "../variables/modal.variables.js";
+
 
 uploadButton.addEventListener("click", () => {
   fileInput.click();
@@ -29,26 +31,63 @@ if (storedAvatar) {
   avatar.src = storedAvatar;
 }
 
-function getCurrentHour() {
+function getGreeting(storedFname) {
   const date = new Date().getHours();
-
-  let greeting = "";
-
   switch (true) {
     case date >= 0 && date < 6:
-      greeting = `Night, ${storedFname}`;
-      break;
+      return `Night, ${storedFname}`;
     case date >= 6 && date < 12:
-      greeting = `Morning, ${storedFname}`;
-      break;
+      return `Morning, ${storedFname}`;
     case date >= 12 && date < 18:
-      greeting = `Day, ${storedFname}`;
-      break;
+      return `Afternoon, ${storedFname}`;
     case date >= 18 && date < 24:
-      greeting = `Evening, ${storedFname}`;
-      break;
+      return `Evening, ${storedFname}`;
+    default:
+      return "Hello";
   }
-  currentDate.textContent = greeting;
 }
 
-getCurrentHour();
+function setGreeting(storedFname) {
+  currentDate.textContent = getGreeting(storedFname);
+}
+
+setGreeting(storedFname);
+
+window.addEventListener("local-storage", (event) => {
+  if (event.detail?.key === "fname") {
+    setGreeting(event.detail.newValue);
+  }
+  if (event.detail?.key === "fullName") {
+   
+    setFullName(event.detail.newValue)
+  }
+});
+
+
+export function setFullName(fullName) {
+  const [firstName, lastName] = fullName.split(' ');
+
+  if (userName) {
+    userName.innerHTML = ""; 
+    const check = document.createElement("span");
+    check.innerHTML = `${firstName}, ${lastName}`;
+    userName.appendChild(check);
+  } 
+}
+
+
+const localStoredName = () => {
+  const storedFname = localStorage.getItem("fname");
+  const storedLname = localStorage.getItem("lname");
+
+  if (storedFname && storedLname) {
+    userName.innerHTML = "";
+
+    const fullName = document.createElement("span");
+    fullName.innerHTML = `${storedFname}, ${storedLname}`;
+
+    userName.appendChild(fullName);
+  }
+};
+
+localStoredName(); 

@@ -5,4 +5,5 @@ document.addEventListener("partialsLoaded", async () => {
   await import("./navside.js");
   await import("./header.js");
   await import("./modal__window.js");
+  await import("./task_container.js");
 });
