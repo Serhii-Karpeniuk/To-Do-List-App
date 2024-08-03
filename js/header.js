@@ -7,7 +7,6 @@ import {
 } from "../variables/header.variables.js";
 import { storedFname } from "../variables/modal.variables.js";
 
-
 uploadButton.addEventListener("click", () => {
   fileInput.click();
 });
@@ -58,23 +57,20 @@ window.addEventListener("local-storage", (event) => {
     setGreeting(event.detail.newValue);
   }
   if (event.detail?.key === "fullName") {
-   
-    setFullName(event.detail.newValue)
+    setFullName(event.detail.newValue);
   }
 });
 
-
 export function setFullName(fullName) {
-  const [firstName, lastName] = fullName.split(' ');
+  const [firstName, lastName] = fullName.split(" ");
 
   if (userName) {
-    userName.innerHTML = ""; 
+    userName.innerHTML = "";
     const check = document.createElement("span");
     check.innerHTML = `${firstName}, ${lastName}`;
     userName.appendChild(check);
-  } 
+  }
 }
-
 
 const localStoredName = () => {
   const storedFname = localStorage.getItem("fname");
@@ -90,4 +86,4 @@ const localStoredName = () => {
   }
 };
 
-localStoredName(); 
+localStoredName();

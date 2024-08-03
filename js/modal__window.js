@@ -6,7 +6,7 @@ import {
   closeButton,
   form,
 } from "../variables/modal.variables.js";
- import { setFullName } from '../js/header.js';
+import { setFullName } from "../js/header.js";
 
 let isFormValid = true;
 
@@ -65,13 +65,14 @@ form.addEventListener("submit", (e) => {
   // const firstNameEvent = new CustomEvent("local-storage", {
   //   detail: { key: "fname", oldValue: "old", newValue: fname },
   // });
-  
+
   const firstNameEvent = createCustomStorageEvent("fname", null, firstName);
   window.dispatchEvent(firstNameEvent);
-  
+
   const fullNameEvent = createCustomStorageEvent(
     "fullName",
-    null, `${firstName} ${lastName}`
+    null,
+    `${firstName} ${lastName}`,
   );
   window.dispatchEvent(fullNameEvent);
 
@@ -83,7 +84,7 @@ form.addEventListener("submit", (e) => {
   setFullName(fullName);
 });
 
- function getFormData(form) {
+function getFormData(form) {
   const modalForm = new FormData(form);
 
   const firstName = modalForm.get("fname");
@@ -91,7 +92,6 @@ form.addEventListener("submit", (e) => {
 
   return { firstName, lastName };
 }
-
 
 function createCustomStorageEvent(key, oldValue, newValue) {
   return new CustomEvent("local-storage", {
@@ -123,5 +123,3 @@ const clearErrors = () => {
   fnameInput.classList.remove("invalid", "valid");
   lnameInput.classList.remove("invalid", "valid");
 };
-
-
