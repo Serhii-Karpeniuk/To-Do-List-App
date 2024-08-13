@@ -1,59 +1,94 @@
-import { newTaskBtn, formDataObj, taskForm, outputTaskTitle, descriptionOutput, timeOutput} from "../variables/task.variables.js";
+import { newTaskBtn, taskForm, outputTaskTitle, descriptionOutput, timeOutput } from "../variables/task.variables.js";
+const tasksContainer = document.querySelector('#output');
 
 newTaskBtn.addEventListener("click", function () {
   const formContainer = document.querySelector(".form__task-container");
   formContainer.style.visibility = "visible";
 });
 
-function getFormDataTask(dataAttribute) {
-  
-  const elements = taskForm.querySelectorAll(`[data-${dataAttribute}]`);
-
-  elements.forEach(element => {
-    const key = element.getAttribute(`data-${dataAttribute}`);
-    formDataObj[key] = element.value;
-  });
-
-  return formDataObj;
-}
-
-const outputDiv = document.querySelector('#output');
-
-
-taskForm.addEventListener("submit", (e)=> {
+taskForm.addEventListener('submit', (e)=> {
   e.preventDefault();
-  const formDataObj = getFormDataTask('field');
-  outputDataForm(formDataObj);
-  closeModalTask() 
-  resetFormFields()
+  getDataForm();
+  displayTasks()
+  resetFormFields();
+  closeModalTask();
 })
 
-function outputDataForm(formDataObj) {
+const tasksArray = [];
 
-  const startTime = taskForm.querySelector('#start_time').value;
-  const endTime = taskForm.querySelector('#end_time').value;
+function getDataForm() {
+  const dataEl = document.querySelectorAll('[data-field]');
+  const formObj = {};
+  let isEmpty = false;
 
-  if (startTime && endTime) {
-    const start = new Date(`1970-01-01T${startTime}:00`);
-    const end = new Date(`1970-01-01T${endTime}:00`);
-    
-    if (start >= end) {
-      outputDiv.textContent = 'Помилка: час початку має бути раніше за час закінчення.';
-    } else {
-      formDataObj.start_time = startTime;
-      formDataObj.end_time = endTime;
-      timeOutput.innerHTML = `Початок ${startTime} - Кінець ${endTime}`
-      console.log(formDataObj);
+  dataEl.forEach((el) => {
+    const key = el.getAttribute('data-field');
+    const value = el.value.trim();
+    if (value === '') {
+      isEmpty = true;
     }
-  }
-  const title = formDataObj.task_title
-  outputTaskTitle.textContent = title;
+    formObj[key] = value;
+  });
 
-  const description = formDataObj.task_description;
-  descriptionOutput.innerHTML = description;
+  if (isEmpty) {
+    console.log('Помилка: всі поля повинні бути заповнені'); 
+  } else {
+    tasksArray.push(formObj);
+    console.log('Завдання додано:', formObj);
+  }
 }
 
-function closeModalTask () {
+// function displayTasks() {
+//   tasksContainer.innerHTML = '';
+
+//   tasksArray.forEach((task) => {
+//     const taskElement = document.createElement('div');
+//     taskElement.className = 'task';
+//     taskElement.innerHTML = `
+//       <div class="output_subcontainer">
+//       <h2>Назва: ${task.task_name}</h2>
+//        <input type="checkbox" id="res_checkbox">
+//       </div>
+//       <p>Опис: ${task.task_description}</p>
+//       <p>Початок: ${task.start_time} - Кінець: ${task.end_time}</p>
+//     `;
+
+//     tasksContainer.appendChild(taskElement);
+//   });
+// }
+
+function displayTasks() {
+  tasksContainer.innerHTML = '';
+
+  tasksArray.forEach((task) => {
+    const taskElement = document.createElement('div');
+    taskElement.className = 'task';
+    taskElement.innerHTML = `
+      <div class="output_subcontainer">
+        <h2 class="task-title">Назва: ${task.task_name}</h2>
+        <input type="checkbox" id="res_checkbox">
+      </div>
+      <p>Опис: ${task.task_description}</p>
+      <p>Початок: ${task.start_time} - Кінець: ${task.end_time}</p>
+    `;
+
+    tasksContainer.appendChild(taskElement);
+
+    const checkbox = taskElement.querySelector('#res_checkbox');
+    const taskTitle = taskElement.querySelector('.task-title');
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        taskTitle.style.textDecoration = 'line-through';
+      } else {
+        taskTitle.style.textDecoration = 'none';
+      }
+    });
+  });
+}
+
+
+function closeModalTask() {
   const formContainer = document.querySelector(".form__task-container");
   formContainer.style.visibility = "hidden";
 }
@@ -61,3 +96,4 @@ function closeModalTask () {
 function resetFormFields() {
   taskForm.reset();
 }
+

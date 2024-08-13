@@ -16,3 +16,34 @@
 .form_task {
   padding: 20px;
 }
+
+.output_subcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#res_checkbox {
+  position: relative;
+  appearance: none; /* Видалення стандартного стилю чекбоксу */
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+#res_checkbox::before {
+  content: '';
+  position: absolute;
+  height: 28px;
+    width: 28px;
+    border-radius: 50px;
+    background-image: url(../img/unchecked.png);
+    top: 12px;
+    /* left: -30px; */
+    background-size: cover;
+    background-position: center;
+}
+
+#res_checkbox:checked::before{
+  background-image: url(../img/checked.png);
+}

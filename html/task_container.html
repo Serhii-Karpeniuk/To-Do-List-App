@@ -10,10 +10,9 @@
     <div class="closed_tasks">Closed</div>
   </div>
   <div id="output">
-    <!-- <input type="checkbox" name="checkbox" id="res_checkbox"> -->
-    <div class="output_task_title"></div>
-    <div class="output_task_description"></div>
-    <div class="output_start_end_time"></div>
+    <!-- <h2 class="output_task_title"></h2>
+    <p class="output_task_description"></p>
+    <p class="output_start_end_time"></p> -->
   </div>
 
   <div class="form__task-container" style="visibility: hidden">
@@ -23,7 +22,7 @@
         id="title"
         type="text"
         name="title"
-        data-field="task_title"
+        data-field="task_name"
         placeholder="Enter name task"
       /><br />
       <label for="description">Description</label>
@@ -33,13 +32,14 @@
         name="description"
         data-field="task_description"
         placeholder="Enter description"
-      /> <br>
-      
+      />
+      <br />
+
       <label for="start_time">Початок:</label>
-      <input type="time" id="start_time" name="start_time"><br>
+      <input type="time" id="start_time" name="start_time" data-field="start_time" /><br />
 
       <label for="end_time">Кінець:</label>
-      <input type="time" id="end_time" name="end_time"><br>
+      <input type="time" id="end_time" name="end_time" data-field="end_time" /><br />
 
       <input type="submit" value="Add Task" class="add_task-button" />
     </form>

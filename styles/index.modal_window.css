@@ -37,10 +37,12 @@
 .modal_container {
   margin: 50px;
   padding: 20px;
+  border-radius: 10px;
   text-align: left;
   white-space: normal;
   background-color: #fff;
   color: #000;
+  gap: 5px;
 }
 
 .invalid {
