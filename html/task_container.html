@@ -1,20 +1,14 @@
 <div class="task__container">
   <p class="list__tasks">List of tasks</p>
-  <p>Wednesday, 11</p>
   <div class="new__task">
+    <p class="date"></p>
     <button class="new__task-btn">+ New Task</button>
   </div>
   <div class="filtered__tasks">
-    <div class="all_tasks">All</div>
-    <div class="open_tasks">Open</div>
-    <div class="closed_tasks">Closed</div>
+    <div class="all_tasks underline">All</div>
+    <div class="open_tasks underline">Open</div>
+    <div class="closed_tasks underline">Closed</div>
   </div>
-  <div id="output">
-    <!-- <h2 class="output_task_title"></h2>
-    <p class="output_task_description"></p>
-    <p class="output_start_end_time"></p> -->
-  </div>
-
   <div class="form__task-container" style="visibility: hidden">
     <form class="form_task">
       <label for="title">Title</label>
@@ -23,6 +17,7 @@
         type="text"
         name="title"
         data-field="task_name"
+        class="margin border-radius"
         placeholder="Enter name task"
       /><br />
       <label for="description">Description</label>
@@ -31,17 +26,31 @@
         type="text"
         name="description"
         data-field="task_description"
+        class="margin border-radius"
         placeholder="Enter description"
       />
       <br />
 
-      <label for="start_time">Початок:</label>
-      <input type="time" id="start_time" name="start_time" data-field="start_time" /><br />
+      <label for="start_time">Start:</label>
+      <input
+        type="time"
+        id="start_time"
+        name="start_time"
+        data-field="start_time"
+        class="margin border-radius"
+      /><br />
 
-      <label for="end_time">Кінець:</label>
-      <input type="time" id="end_time" name="end_time" data-field="end_time" /><br />
+      <label for="end_time">End:</label>
+      <input
+        type="time"
+        id="end_time"
+        name="end_time"
+        data-field="end_time"
+        class="margin border-radius"
+      /><br />
 
-      <input type="submit" value="Add Task" class="add_task-button" />
+      <input type="submit" value="Add Task" class="add_task-button margin" />
     </form>
   </div>
+  <div id="output"></div>
 </div>

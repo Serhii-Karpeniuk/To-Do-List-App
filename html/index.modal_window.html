@@ -1,31 +1,35 @@
 <div class="fixed-overlay fixed-overlay__modal" style="display: flex">
   <div class="modal">
     <div class="modal_container">
-      <button class="close__button">X</button>
+      <div class="close__button">
+        <img class="close__img" src="../img/close-img.png" alt="Close Button" />
+      </div>
       <form action="" id="form__modal">
         <div class="input_group">
-          <label for="fname">Ім'я</label>
+          <label for="fname">Ім'я:</label>
           <input
             type="text"
             id="fname"
             name="fname"
             placeholder="Enter name"
             required
-          /><br />
+          />
           <div class="error_output"></div>
         </div>
         <div class="input_group">
-          <label for="lname">Прізвище</label>
+          <label for="lname">Прізвище:</label>
           <input
             type="text"
             id="lname"
             name="lname"
             placeholder="Enter lastname"
             required
-          /><br />
+          />
           <div class="error_output"></div>
         </div>
-        <button class="send__modal__button" type="submit">Надіслати</button>
+        <div class="button__container">
+          <button class="send__modal__button" type="submit">Надіслати</button>
+        </div>
       </form>
     </div>
   </div>

@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Tahoma, sans-serif;
 }
 
 :root {
@@ -21,7 +22,7 @@ img {
 }
 
 html {
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
 }
 
 body {
